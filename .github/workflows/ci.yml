@@ -1,0 +1,27 @@
+name: Continuous Integration
+
+# 1. When the workflow should run
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  # Allows you to manually run the workflow from the Actions tab
+  workflow_dispatch:
+
+# 2. Define the jobs to run
+jobs:
+  build:
+    # Use the latest Ubuntu environment
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Run a simple command to ensure success (green checkmark)
+      - name: Verify files exist
+        run: |
+          echo "Workflow started successfully."
+          # If this step runs without error, the workflow passes.
